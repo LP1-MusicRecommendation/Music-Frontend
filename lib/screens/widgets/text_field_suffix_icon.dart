@@ -12,7 +12,7 @@ class TextFieldSuffixIcon extends StatefulWidget {
   final Color? accent;
   final TextInputType inputType;
   bool obscure;
-  final ValueChanged<String>? onSaved;
+  final ValueChanged<String> onSaved;
 
   TextFieldSuffixIcon({Key? key,
     required this.suffixIcon, required this.prefixIcon, required this.label, required this.hint,
@@ -70,7 +70,7 @@ class _TextFieldSuffixIconState extends State<TextFieldSuffixIcon> {
             gapPadding: 16,
           ),
         ),
-        onSaved: (value)=> widget.onSaved!(value!),
+        onFieldSubmitted: (value)=> widget.onSaved(value),
         validator: (value){
           if(value!.isEmpty) return widget.errorText;
           return null;

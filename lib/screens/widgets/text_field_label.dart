@@ -10,7 +10,7 @@ class TextFieldLabel extends StatefulWidget {
   final Color? accent;
   final TextInputType inputType;
   bool obscure;
-  final ValueChanged<String>? onSaved;
+  final ValueChanged<String> onSaved;
   TextFieldLabel({Key? key,
     required this.prefixIcon, required this.label, required this.hint,
     required this.errorText, this.radius=8, required this.accent, required this.inputType,
@@ -52,11 +52,14 @@ class _TextFieldLabelState extends State<TextFieldLabel> {
             gapPadding: 16,
           ),
         ),
-        onSaved: (value)=> widget.onSaved!(value!),
+        onFieldSubmitted: (value){
+          widget.onSaved(value);
+        },
         validator: (value){
           if(value!.isEmpty) return widget.errorText;
           return null;
         },
+
       ),
     );
   }
