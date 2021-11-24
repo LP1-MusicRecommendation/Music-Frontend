@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:music_recommender/models/genreScreenArguements.dart';
+import 'package:music_recommender/screens/GenreList/genre_list_widget.dart';
 
 class GenreCards extends StatelessWidget {
   final String genres;
@@ -6,13 +8,13 @@ class GenreCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(genres);
+
     return Container(
         height: 30,
         width: 30,
         child: InkWell(
           onTap: () {
-            print(genres);
+            Navigator.pushNamed(context, GenreListWidget.routeName,arguments: GenreScreenArguments(genreName: genres));
           },
           child: Card(
             color: Colors.transparent,
