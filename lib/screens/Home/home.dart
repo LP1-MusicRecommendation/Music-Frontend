@@ -76,13 +76,12 @@ class _HomePageState extends State<HomePage> {
                         margin: EdgeInsets.symmetric(horizontal: 40),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.white),
+                            color: Colors.grey),
                         child: Center(
                             child: Text(
                           "Our Genres",
                           style: TextStyle(
-                              color: Colors.grey[900],
-                              fontWeight: FontWeight.bold),
+                              color: Colors.black, fontWeight: FontWeight.bold),
                         )),
                       ),
                       SizedBox(

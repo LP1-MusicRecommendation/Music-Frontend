@@ -20,13 +20,18 @@ class GenreCards extends StatelessWidget {
             child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/art1.png'),
-                        fit: BoxFit.cover)),
+                    gradient: LinearGradient(colors: [
+                      Color.fromRGBO(235, 60, 98, 0.3),
+                      Color.fromRGBO(235, 60, 98, 0.015)
+                    ]
+                        // image: DecorationImage(
+                        //     image: AssetImage('assets/images/female_singing.png'),
+                        //fit: BoxFit.cover
+                        )),
                 child: Center(
                     child: Text(genres,
                         style: TextStyle(
-                            color: Colors.black,
+                            color: Colors.grey,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)))),
           ),
