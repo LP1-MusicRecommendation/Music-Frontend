@@ -80,7 +80,7 @@ class _AuthenticationState extends State<Authentication> {
         try{
           User user = await registerUser(_registerEmail, _registerPassword, _registerUserName);
           storeUser(user);
-          print(user);
+          print(user.toString());
 
           message =  'User Registered Successfully';
           showToast(message);
@@ -150,7 +150,6 @@ class _AuthenticationState extends State<Authentication> {
       try{
         User user = await loginUser(_loginEmail, _loginPassword);
         storeUser(user);
-        print(user);
 
         message =  'User Logged In Successfully';
         showToast(message);

@@ -47,7 +47,7 @@ Future<User> loginUser(String email,String password) async {
   }
 }
 
-Future<String> logOutUser()async{
+Future<bool> logOutUser()async{
   final response = await http.post(
     Uri.parse(_url+'/user/logout'),
     headers: <String, String>{
@@ -57,9 +57,9 @@ Future<String> logOutUser()async{
   );
 
   if(response.statusCode == 200){
-    return 'Logged Out Successfully';
+    return true;
   }else{
-    return 'Log Out Failed';
+    return false;
   }
 
 

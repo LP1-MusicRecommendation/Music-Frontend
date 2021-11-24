@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:music_recommender/config/config.dart';
+import 'package:music_recommender/models/users.dart';
 import 'package:music_recommender/screens/widgets/toast.dart';
 import 'package:music_recommender/services/auth.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+
+
   const ProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  late User user;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    user = getUser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,8 +97,11 @@ class ProfileScreen extends StatelessWidget {
     }
 
     Future<void> logOut()async{
-      String result = await logOutUser();
-      showToast(result);
+      bool result = await logOutUser();
+      showToast(result==true? 'Signed out successfully' : 'Sign out Failed');
+      if(result==true){
+        Navigator.pop(context);
+      }
     }
 
     Widget buildForegroundContainer(var height,var width){
@@ -92,13 +112,12 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(height: height*0.23,),
             Align(alignment:Alignment.center,child: buildProfileImageContainer(height, width)),
             SizedBox(height: height*0.03,),
-            buildTextContainer(height, width, 'Name of the User'),
+            buildTextContainer(height, width, user.userName),
             SizedBox(height: height*0.03,),
-            buildTextContainer(height, width, 'Email of the User'),
+            buildTextContainer(height, width, user.email),
             SizedBox(height: height*0.03,),
             GestureDetector(onTap: (){
               logOut();
-              Navigator.pop(context);
             },child: buildGoToWishlistBtn(height,width,'Sign Out'),)
           ],
         ),
