@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_recommender/screens/Authentication/authentication.dart';
-import 'package:music_recommender/screens/Home/home.dart';
+import 'package:music_recommender/screens/GenreList/genre_list_widget.dart';
 import 'package:music_recommender/screens/Navigation/navbar.dart';
 import 'package:music_recommender/screens/Profile/profile.dart';
 
@@ -18,7 +18,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/auth': (context) => const Authentication(),
         '/profile': (context) => const ProfileScreen(),
-        '/nav': (context) => const Navigation_page()
+        '/nav': (context) => const Navigation_page(),
+        GenreListWidget.routeName: (context) => const GenreListWidget(),
       },
     );
   }

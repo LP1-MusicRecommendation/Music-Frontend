@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:music_recommender/models/songs.dart';
 
 Color primary = Color.fromRGBO(24, 25, 26, 1);
 // Color primary = Color.fromRGBO(12, 14, 89, 1);

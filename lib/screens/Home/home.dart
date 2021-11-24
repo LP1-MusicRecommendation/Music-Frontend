@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:music_recommender/models/genreScreenArguements.dart';
 import 'package:music_recommender/screens/Card/cards.dart';
+import 'package:music_recommender/screens/GenreList/genre_list_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                        image: AssetImage('assets/images/one.jpg'),
+                        image: AssetImage('assets/images/temp_icon.png'),
                         fit: BoxFit.cover)),
                 child: Container(
                   decoration: BoxDecoration(
@@ -101,7 +103,6 @@ class _HomePageState extends State<HomePage> {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     children: genres.map((genre) {
-                      print(genre);
                       return GenreCards(genres: genre);
                     }).toList()),
               )
