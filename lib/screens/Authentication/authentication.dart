@@ -84,7 +84,7 @@ class _AuthenticationState extends State<Authentication> {
 
           message =  'User Registered Successfully';
           showToast(message);
-          Navigator.pushNamed(context, '/profile');
+          Navigator.pushNamed(context, '/nav');
         }catch(e){
           message = "Exception error";
           print(e);
@@ -153,7 +153,7 @@ class _AuthenticationState extends State<Authentication> {
 
         message =  'User Logged In Successfully';
         showToast(message);
-        Navigator.pushNamed(context, '/profile');
+        Navigator.pushNamed(context, '/nav');
       }catch(e){
         message = "Exception error";
         print(e);
