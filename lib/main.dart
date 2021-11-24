@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_recommender/screens/Authentication/authentication.dart';
 import 'package:music_recommender/screens/Home/home.dart';
 import 'package:music_recommender/screens/Navigation/navbar.dart';
+import 'package:music_recommender/screens/Profile/profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,8 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/nav',
-      routes: {'/nav': (context) => const Navigation_page()},
+      initialRoute: '/auth',
+      routes: {
+        '/auth': (context) => const Authentication(),
+        '/profile': (context) => const ProfileScreen(),
+        '/nav': (context) => const Navigation_page()
+      },
     );
   }
 }

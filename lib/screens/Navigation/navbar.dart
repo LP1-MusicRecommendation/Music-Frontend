@@ -29,7 +29,7 @@ class _Navigation_pageState extends State<Navigation_page> {
         body: Builder(builder: (context) {
           if (_selectedItemindex == 0) return HomePage();
           if (_selectedItemindex == 1) return SearchPage();
-          if (_selectedItemindex == 2) return Profile();
+          if (_selectedItemindex == 2) return ProfileScreen();
           return Container();
         }));
   }
