@@ -3,11 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:music_recommender/config/config.dart';
 import 'package:music_recommender/models/genreScreenArguements.dart';
 import 'package:music_recommender/models/songs.dart';
-import 'package:music_recommender/models/users.dart';
 import 'package:music_recommender/screens/widgets/genreCard.dart';
-import 'package:music_recommender/screens/widgets/toast.dart';
-import 'package:music_recommender/services/auth.dart';
-import 'package:music_recommender/services/songs.dart';
 
 class GenreListWidget extends StatefulWidget {
 
@@ -23,26 +19,11 @@ class GenreListWidget extends StatefulWidget {
 class _GenreListWidgetState extends State<GenreListWidget> {
 
   late List<Song> songList = [];
-  // late String genreName;
-  // late User user;
-  // void getSongsList() async{
-  //   try{
-  //     setState(() async{
-  //       songList = await getGenreSongs(genreName, user.token);
-  //     });
-  //   }catch(e){
-  //     showToast(e.toString());
-  //   }
-  // }
-
-
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    // user = getUser();
-    // getSongsList();
   }
 
   @override
@@ -61,6 +42,10 @@ class _GenreListWidgetState extends State<GenreListWidget> {
       Song(title: 'Demons', artist: 'Imagine Dragons', genre:  args.genreName, year: 2014, duration: 5, popularity: 1000),
       Song(title: 'Demons', artist: 'Imagine Dragons', genre:  args.genreName, year: 2014, duration: 5, popularity: 1000),
     ];
+
+    setState(() {
+      songList = args.genreSongList;
+    });
 
 
     List<Widget> buildGenreList(){
