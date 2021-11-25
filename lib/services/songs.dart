@@ -30,10 +30,7 @@ Future<List<Song>> getGenreSongs(String genreName,String token)async{
       'Authorization': 'Bearer '+token,
     },
     body: jsonEncode(<String,String>{
-        "Title":"",
-        "Artist":"",
         "Genre":genreName,
-        "Year":""
     }),
   );
 
