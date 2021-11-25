@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:music_recommender/models/genreScreenArguements.dart';
+import 'package:music_recommender/models/users.dart';
 import 'package:music_recommender/screens/Card/cards.dart';
-import 'package:music_recommender/screens/GenreList/genre_list_widget.dart';
+import 'package:music_recommender/screens/widgets/toast.dart';
+import 'package:music_recommender/services/auth.dart';
+import 'package:music_recommender/services/songs.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class _HomePageState extends State<HomePage> {
     'Ambience'
   ];
 
+
+
   final List<String> _listItem = [
     'assets/images/art1.png',
     'assets/images/art1.png',
@@ -30,6 +34,33 @@ class _HomePageState extends State<HomePage> {
     'assets/images/art1.png',
     'assets/images/art1.png',
   ];
+
+  late User user;
+
+  void solve()async{
+    try{
+      await getGenreList(user.token);
+      setState(() {
+        genres = getGenreArray();
+      });
+    }catch(e){
+      showToast(e.toString());
+    }
+  }
+
+  List<Widget> getList(){
+    return genres.map((genre) {
+      return GenreCards(genres: genre);
+    }).toList();
+  }
+
+  @override
+  void initState(){
+    // TODO: implement initState
+    super.initState();
+    user = getUser();
+    solve();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,10 +132,8 @@ class _HomePageState extends State<HomePage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
-                    children: genres.map((genre) {
-                      return GenreCards(genres: genre);
-                    }).toList()),
-              )
+                    children: getList(),
+                ))
             ],
           ),
         ),
