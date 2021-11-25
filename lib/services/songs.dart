@@ -61,12 +61,33 @@ Future<List<dynamic>> getAllSongs(String token) async {
   ).then((http.Response res) async {
     if (res.statusCode == 200) {
       result = jsonDecode(res.body);
-      print(result);
     } else {
       throw Exception("Could not show song list");
     }
     return result;
   });
+}
+
+Future<void> addToYourPlaylist(
+    String id, String token, String Title, String email) async {
+  final response = await http.post(
+    Uri.parse(_url + '/user/playlist'),
+    headers: <String, String>{
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+    body: jsonEncode(<String, String>{
+      "id": id,
+      "email": email,
+      "name": Title,
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    print('Success');
+  } else {
+    throw Exception("Could not show song list");
+  }
 }
 
 List<String> getGenreArray() {
