@@ -24,9 +24,9 @@ Future<User> registerUser(
 
   if (response.statusCode == 201) {
     User user = User.fromJson(jsonDecode(response.body));
-    pref.setString('token', user.token);
-    pref.setString('email', user.email);
-    pref.setString('userName', user.userName);
+    pref.setString('token', user.token.toString());
+    pref.setString('email', user.email.toString());
+    pref.setString('userName', user.userName.toString());
     return user;
   } else {
     print(response.statusCode);
@@ -46,9 +46,9 @@ Future<User> loginUser(String email, String password) async {
 
   if (response.statusCode == 200) {
     User user = User.fromJson(jsonDecode(response.body));
-    pref.setString('token', user.token);
-    pref.setString('email', user.email);
-    pref.setString('userName', user.userName);
+    pref.setString('token', user.token.toString());
+    pref.setString('email', user.email.toString());
+    pref.setString('userName', user.userName.toString());
     return user;
   } else {
     print(response.statusCode);
