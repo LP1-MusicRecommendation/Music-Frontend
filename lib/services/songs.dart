@@ -51,6 +51,31 @@ Future<List<Song>> getGenreSongs(String genreName, String token) async {
   }
 }
 
+Future<List<Song>> getPlayList(String email, String token) async {
+  final response = await http.post(
+    Uri.parse(_url + '/user/playlist'),
+    headers: <String, String>{
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+    },
+    body: jsonEncode(<String, String>{
+      "email":email
+    }),
+  );
+
+  if (response.statusCode == 201) {
+    List<Song> result = [];
+
+    List<dynamic> tempList = jsonDecode(response.body);
+    tempList.forEach((element) {
+      result.add(Song.fromJson(element));
+    });
+    return result;
+  } else {
+    throw Exception("Could not show playList");
+  }
+}
+
 Future<List<dynamic>> getAllSongs(String token) async {
   List<dynamic> result = [];
   return await http.get(
@@ -72,7 +97,7 @@ Future<List<dynamic>> getAllSongs(String token) async {
 Future<void> addToYourPlaylist(
     String id, String token, String title, String email) async {
   final response = await http.post(
-    Uri.parse(_url + '/user/playlist'),
+    Uri.parse(_url + '/user/addtoplaylist'),
     headers: <String, String>{
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token,
