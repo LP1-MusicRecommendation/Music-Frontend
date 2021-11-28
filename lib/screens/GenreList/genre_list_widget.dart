@@ -28,6 +28,7 @@ class _GenreListWidgetState extends State<GenreListWidget> {
     // genreName = args.genreName;
     songList = [
       Song(
+          id: '',
           title: 'Demons',
           artist: 'Imagine Dragons',
           genre: args.genreName,
@@ -35,6 +36,7 @@ class _GenreListWidgetState extends State<GenreListWidget> {
           duration: 5,
           popularity: 1000),
       Song(
+          id: '',
           title: 'Demons',
           artist: 'Imagine Dragons',
           genre: args.genreName,
@@ -42,6 +44,7 @@ class _GenreListWidgetState extends State<GenreListWidget> {
           duration: 5,
           popularity: 1000),
       Song(
+          id: '',
           title: 'Demons',
           artist: 'Imagine Dragons',
           genre: args.genreName,
@@ -49,6 +52,7 @@ class _GenreListWidgetState extends State<GenreListWidget> {
           duration: 5,
           popularity: 1000),
       Song(
+          id: '',
           title: 'Demons',
           artist: 'Imagine Dragons',
           genre: args.genreName,
@@ -56,6 +60,7 @@ class _GenreListWidgetState extends State<GenreListWidget> {
           duration: 5,
           popularity: 1000),
       Song(
+          id: '',
           title: 'Demons',
           artist: 'Imagine Dragons',
           genre: args.genreName,
@@ -63,6 +68,7 @@ class _GenreListWidgetState extends State<GenreListWidget> {
           duration: 5,
           popularity: 1000),
       Song(
+          id: '',
           title: 'Demons',
           artist: 'Imagine Dragons',
           genre: args.genreName,
@@ -70,20 +76,7 @@ class _GenreListWidgetState extends State<GenreListWidget> {
           duration: 5,
           popularity: 1000),
       Song(
-          title: 'Demons',
-          artist: 'Imagine Dragons',
-          genre: args.genreName,
-          year: 2014,
-          duration: 5,
-          popularity: 1000),
-      Song(
-          title: 'Demons',
-          artist: 'Imagine Dragons',
-          genre: args.genreName,
-          year: 2014,
-          duration: 5,
-          popularity: 1000),
-      Song(
+          id: '',
           title: 'Demons',
           artist: 'Imagine Dragons',
           genre: args.genreName,

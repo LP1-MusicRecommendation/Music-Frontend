@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:music_recommender/config/config.dart';
 import 'package:music_recommender/models/songs.dart';
+import 'package:music_recommender/services/songs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GenreCard extends StatefulWidget {
   final Song song;
@@ -13,6 +15,19 @@ class GenreCard extends StatefulWidget {
 }
 
 class _GenreCardState extends State<GenreCard> {
+
+  bool isAddedToPlayList = false;
+
+  void addToPlaylist() async {
+    final pref = await SharedPreferences.getInstance();
+    String token = pref.getString('token').toString();
+    String email = pref.getString('email').toString();
+    await addToYourPlaylist(widget.song.id, token, widget.song.title, email);
+    setState(() {
+      isAddedToPlayList = !isAddedToPlayList;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -67,14 +82,28 @@ class _GenreCardState extends State<GenreCard> {
           SizedBox(
             height: height * 0.02,
           ),
-          Text(
-            widget.song.artist,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w900,
-              color: Colors.white,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                widget.song.artist,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  addToPlaylist();
+                },
+                child: Icon(
+                  isAddedToPlayList==true?Icons.bookmark_remove_sharp :Icons.bookmark_add,
+                  color: Colors.blue,
+                ),
+              )
+            ],
           ),
           SizedBox(
             height: height * 0.03,

@@ -15,11 +15,17 @@ class SearchCards extends StatefulWidget {
 }
 
 class _SearchCardsState extends State<SearchCards> {
+
+  bool isAddedToPlayList = false;
+
   void addToPlaylist() async {
     final pref = await SharedPreferences.getInstance();
     String token = pref.getString('token').toString();
     String email = pref.getString('email').toString();
     await addToYourPlaylist(widget.id, token, widget.title, email);
+    setState(() {
+      isAddedToPlayList = !isAddedToPlayList;
+    });
   }
 
   @override
@@ -46,7 +52,7 @@ class _SearchCardsState extends State<SearchCards> {
               SizedBox(width: 8),
               IconButton(
                 icon: Icon(
-                  Icons.bookmark_add,
+                  isAddedToPlayList==true?Icons.bookmark_remove_sharp :Icons.bookmark_add,
                   color: Colors.blue,
                 ),
                 onPressed: addToPlaylist,

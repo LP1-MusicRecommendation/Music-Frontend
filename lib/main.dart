@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_recommender/screens/Authentication/authentication.dart';
 import 'package:music_recommender/screens/GenreList/genre_list_widget.dart';
 import 'package:music_recommender/screens/Navigation/navbar.dart';
+import 'package:music_recommender/screens/PlayList/playList.dart';
 import 'package:music_recommender/screens/Profile/profile.dart';
 import 'package:music_recommender/screens/Splash/splashScreen.dart';
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => const ProfileScreen(),
         '/nav': (context) => const Navigation_page(),
         GenreListWidget.routeName: (context) => const GenreListWidget(),
-        SplashScreen.routeName: (context) => const SplashScreen()
+        SplashScreen.routeName: (context) => const SplashScreen(),
+        PlayListWidget.routeName: (context) => const PlayListWidget()
       },
     );
   }

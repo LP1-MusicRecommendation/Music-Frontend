@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_recommender/config/config.dart';
 import 'package:music_recommender/models/users.dart';
+import 'package:music_recommender/screens/PlayList/playList.dart';
 import 'package:music_recommender/screens/widgets/toast.dart';
 import 'package:music_recommender/services/auth.dart';
 
@@ -117,6 +118,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: height * 0.03,
             ),
             buildTextContainer(height, width, user.email),
+            SizedBox(
+              height: height * 0.03,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, PlayListWidget.routeName);
+              },
+              child: buildGoToWishlistBtn(height, width, 'PlayList'),
+            ),
             SizedBox(
               height: height * 0.03,
             ),
