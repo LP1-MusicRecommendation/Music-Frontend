@@ -40,6 +40,7 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    String searchText = '';
     return Scaffold(
         appBar: AppBar(
           title: Text('Search your favourite song!',
@@ -53,21 +54,37 @@ class _SearchPageState extends State<SearchPage> {
           child: Container(
             child: Column(
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.only(top: 10.0, right: 10, left: 10),
-
-                  /// In AnimSearchBar widget, the width, textController, onSuffixTap are required properties.
-                  /// You have also control over the suffixIcon, prefixIcon, helpText and animationDurationInMilli
-                  child: AnimSearchBar(
-                    width: 400,
-                    color: Colors.grey,
-                    textController: textController,
-                    onSuffixTap: () {
-                      setState(() {
-                        textController.clear();
-                      });
-                    },
+                Container(
+                  margin: EdgeInsets.only(top: 5, bottom: 15),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10.0, right: 10, left: 10),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                              borderSide: BorderSide(color: Colors.pinkAccent)),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.pinkAccent),
+                              borderRadius: BorderRadius.circular(10.0)),
+                          hintText: "Search",
+                          hintStyle: TextStyle(color: Colors.grey),
+                          fillColor: Colors.white,
+                          suffixIcon: IconButton(
+                            onPressed: null,
+                            icon: Icon(
+                              Icons.search,
+                              color: Color.fromRGBO(235, 60, 98, 1),
+                            ),
+                          )),
+                      style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      onChanged: (value) {
+                        setState(() {
+                          searchText = value;
+                        });
+                        print(searchText);
+                      },
+                    ),
                   ),
                 ),
                 songs.length == 0

@@ -83,12 +83,12 @@ class _AuthenticationState extends State<Authentication> {
         _registerUserName.isEmpty ||
         _registerPassword.isEmpty) {
       message = 'Enter valid credentials';
+      showToast(message);
     } else {
       try {
         User user = await registerUser(
             _registerEmail, _registerPassword, _registerUserName);
         storeUser(user);
-        print(user.toString());
 
         message = 'User Registered Successfully';
         showToast(message);
@@ -196,6 +196,7 @@ class _AuthenticationState extends State<Authentication> {
   Future<void> login() async {
     if (_loginEmail.isEmpty || _loginPassword.isEmpty) {
       message = 'Enter valid credentials';
+      showToast(message);
     } else {
       try {
         User user = await loginUser(_loginEmail, _loginPassword);
