@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:music_recommender/models/songs.dart';
+import 'package:music_recommender/screens/widgets/toast.dart';
 
 final String _url = "https://muzic-recommender.herokuapp.com";
 late List<String> genreList = [];
@@ -69,7 +70,7 @@ Future<List<dynamic>> getAllSongs(String token) async {
 }
 
 Future<void> addToYourPlaylist(
-    String id, String token, String Title, String email) async {
+    String id, String token, String title, String email) async {
   final response = await http.post(
     Uri.parse(_url + '/user/playlist'),
     headers: <String, String>{
@@ -79,12 +80,12 @@ Future<void> addToYourPlaylist(
     body: jsonEncode(<String, String>{
       "id": id,
       "email": email,
-      "name": Title,
+      "name": title,
     }),
   );
 
-  if (response.statusCode == 200) {
-    print('Success');
+  if (response.statusCode == 201) {
+    showToast("Song added successfully!!");
   } else {
     throw Exception("Could not show song list");
   }

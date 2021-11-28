@@ -16,7 +16,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     user = getUser();
   }
@@ -148,7 +147,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 class BackGround extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
     final Gradient gradient = new LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
@@ -174,7 +172,6 @@ class BackGround extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
     return false;
   }
 }

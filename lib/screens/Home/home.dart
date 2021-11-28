@@ -22,8 +22,6 @@ class _HomePageState extends State<HomePage> {
     'Ambience'
   ];
 
-
-
   final List<String> _listItem = [
     'assets/images/art1.png',
     'assets/images/art1.png',
@@ -37,26 +35,25 @@ class _HomePageState extends State<HomePage> {
 
   late User user;
 
-  void solve()async{
-    try{
+  void solve() async {
+    try {
       await getGenreList(user.token);
       setState(() {
         genres = getGenreArray();
       });
-    }catch(e){
+    } catch (e) {
       showToast(e.toString());
     }
   }
 
-  List<Widget> getList(){
+  List<Widget> getList() {
     return genres.map((genre) {
       return GenreCards(genres: genre);
     }).toList();
   }
 
   @override
-  void initState(){
-    // TODO: implement initState
+  void initState() {
     super.initState();
     user = getUser();
     solve();
@@ -76,10 +73,10 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
                 height: 250,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    // image: DecorationImage(
-                    //     image: AssetImage('assets/images/temp_icon.png'),
-                    //     fit: BoxFit.cover)
+                  borderRadius: BorderRadius.circular(20),
+                  // image: DecorationImage(
+                  //     image: AssetImage('assets/images/temp_icon.png'),
+                  //     fit: BoxFit.cover)
                 ),
                 child: Container(
                   decoration: BoxDecoration(
@@ -129,12 +126,12 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               Expanded(
-                child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    children: getList(),
-                ))
+                  child: GridView.count(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                children: getList(),
+              ))
             ],
           ),
         ),

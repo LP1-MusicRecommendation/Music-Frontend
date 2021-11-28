@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:music_recommender/services/songs.dart';
-import 'package:music_recommender/screens/widgets/toast.dart';
 
 class SearchCards extends StatefulWidget {
   String id = '';
@@ -20,8 +19,7 @@ class _SearchCardsState extends State<SearchCards> {
     final pref = await SharedPreferences.getInstance();
     String token = pref.getString('token').toString();
     String email = pref.getString('email').toString();
-    // await addToYourPlaylist(widget.id, token, widget.title, email);
-    showToast("Song added successfully!!");
+    await addToYourPlaylist(widget.id, token, widget.title, email);
   }
 
   @override

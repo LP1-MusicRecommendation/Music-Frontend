@@ -16,39 +16,38 @@ class GenreCards extends StatefulWidget {
 }
 
 class _GenreCardsState extends State<GenreCards> {
-
-
   late User user;
   late List<Song> li = [];
 
-  Future<void> getSongList() async{
-      try{
-        List<Song> temp = await getGenreSongs(widget.genres, user.token);
-        temp.forEach((element) {li.add(element);});
-      }catch(e){
-        print(e);
-        showToast(e.toString());
-      }
-
+  Future<void> getSongList() async {
+    try {
+      List<Song> temp = await getGenreSongs(widget.genres, user.token);
+      temp.forEach((element) {
+        li.add(element);
+      });
+    } catch (e) {
+      print(e);
+      showToast(e.toString());
+    }
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     user = getUser();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
         height: 30,
         width: 30,
         child: InkWell(
-          onTap: ()async {
+          onTap: () async {
             await getSongList();
-            Navigator.pushNamed(context, GenreListWidget.routeName,arguments: GenreScreenArguments(genreName: widget.genres,genreSongList: li));
+            Navigator.pushNamed(context, GenreListWidget.routeName,
+                arguments: GenreScreenArguments(
+                    genreName: widget.genres, genreSongList: li));
           },
           child: Card(
             color: Colors.transparent,

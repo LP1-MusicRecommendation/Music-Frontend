@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void Auth() async {
+  void auth() async {
     final pref = await SharedPreferences.getInstance();
     var token = pref.getString('token');
     if (token == null) {
@@ -24,8 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
-    Auth();
+    auth();
     super.initState();
   }
 
